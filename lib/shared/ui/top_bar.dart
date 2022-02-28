@@ -10,7 +10,7 @@ final barTitles = [
   texts['bottomBar']!['settings'],
 ];
 
-CupertinoNavigationBar topBarIOS(curPageIndex) {
+CupertinoNavigationBar topBarIOS({curPageIndex}) {
   return CupertinoNavigationBar(
     middle: Text(
       barTitles[curPageIndex]!,
@@ -20,7 +20,7 @@ CupertinoNavigationBar topBarIOS(curPageIndex) {
   );
 }
 
-AppBar topBarAndroid(curPageIndex) {
+AppBar topBarAndroid({curPageIndex}) {
   return AppBar(
     title: Text(barTitles[curPageIndex]!),
     centerTitle: true,
@@ -29,6 +29,8 @@ AppBar topBarAndroid(curPageIndex) {
   );
 }
 
-dynamic topBar(curPageIndex) {
-  return Platform.isAndroid ? topBarAndroid(curPageIndex) : topBarIOS(curPageIndex);
+dynamic topBar({curPageIndex}) {
+  return Platform.isAndroid
+      ? topBarAndroid(curPageIndex: curPageIndex)
+      : topBarIOS(curPageIndex: curPageIndex);
 }

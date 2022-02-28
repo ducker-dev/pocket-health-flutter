@@ -22,29 +22,29 @@ final items = <BottomNavigationBarItem>[
   ),
 ];
 
-CupertinoTabBar bottomBarIOS(currentIndex, onTap) {
+CupertinoTabBar bottomBarIOS({curPageIndex, onTap}) {
   return CupertinoTabBar(
     activeColor: accentColor,
     backgroundColor: bottomBarBGColor,
-    currentIndex: currentIndex,
+    currentIndex: curPageIndex,
     onTap: onTap,
     items: items,
   );
 }
 
-BottomNavigationBar bottomBarAndroid(currentIndex, onTap) {
+BottomNavigationBar bottomBarAndroid({curPageIndex, onTap}) {
   return BottomNavigationBar(
     type: BottomNavigationBarType.fixed,
     selectedItemColor: accentColor,
     backgroundColor: bottomBarBGColor,
-    currentIndex: currentIndex,
+    currentIndex: curPageIndex,
     onTap: onTap,
     items: items,
   );
 }
 
-dynamic bottomBar(currentIndex, onTap) {
+dynamic bottomBar({curPageIndex, onTap}) {
   return Platform.isAndroid
-      ? bottomBarAndroid(currentIndex, onTap)
-      : bottomBarIOS(currentIndex, onTap);
+      ? bottomBarAndroid(curPageIndex: curPageIndex, onTap: onTap)
+      : bottomBarIOS(curPageIndex: curPageIndex, onTap: onTap);
 }

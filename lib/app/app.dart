@@ -27,7 +27,7 @@ class _PocketHealthAppState extends State<PocketHealthApp> {
 
   onTap(newPageNumber) {
     _pageController.animateToPage(newPageNumber,
-        duration: const Duration(microseconds: 2000), curve: Curves.bounceIn);
+        duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
 
   onPageChanged(newPageNumber) {
@@ -44,18 +44,13 @@ class _PocketHealthAppState extends State<PocketHealthApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar(_curPageIndex),
+      appBar: topBar(curPageIndex: _curPageIndex),
       backgroundColor: pageBGColorOne,
-      bottomNavigationBar: bottomBar(_curPageIndex, onTap),
+      bottomNavigationBar: bottomBar(curPageIndex: _curPageIndex, onTap: onTap),
       body: PageView(
         controller: _pageController,
         onPageChanged: onPageChanged,
-        children: <Widget>[
-          waterPage(onGoToPage),
-          weightPage(),
-          statPage(),
-          settingsPage(),
-        ],
+        children: getPages(onGoToPage: onGoToPage),
       ),
     );
   }

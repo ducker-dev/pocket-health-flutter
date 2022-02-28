@@ -2,5 +2,5 @@ import 'package:flutter/cupertino.dart';
 import 'package:pocket_health/app/index.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
